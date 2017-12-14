@@ -54,7 +54,7 @@ public class z {
 		
 		pictureLabel = new JLabel();
 		
-		image = new ImageIcon(".//res//re.png");
+		image = new ImageIcon(".//res//title.png");
                 pictureLabel.setIcon(image);
 		picturePanel.add(pictureLabel);
                 
@@ -218,7 +218,7 @@ public class z {
             imageLabel.setIcon(image);
             
 		position = "talkMom";
-		mainTextArea.setText("Mom:You can't come in the house.\nif you can't bring any food for dinner");
+		mainTextArea.setText("Mom:Dont't come back.\nif you can't bring any food for dinner");
 		choice1.setText(">");
 		choice2.setText("");
 		choice3.setText("");
@@ -229,7 +229,7 @@ public class z {
             imageLabel.setIcon(image);
             
 		position = "callBrother";
-		mainTextArea.setText("Big Brother:Hey don't be stupid!.I'm not going to help you. \n\nBig Brother kicked and hit you hard.\n(you receive 20 damage)");
+		mainTextArea.setText("Big Brother:Hey don't be stupid!.\nNobody going to help you. \n\nBig Brother kicked and hit you hard.\n(you receive 20 damage)");
 		playerHP = playerHP -20;
 		hpLabelNumber.setText(""+playerHP);
 		choice1.setText(">");
@@ -238,7 +238,7 @@ public class z {
 		choice4.setText("");
 	}
 	public void crossRoad(){
-            image= new ImageIcon(".//res//crossroad.jpg");
+            image= new ImageIcon(".//res//crossroad.png");
             imageLabel.setIcon(image);
             
 		position = "crossRoad";
@@ -252,7 +252,9 @@ public class z {
        
         
 	public void north(){
-		
+	   image= new ImageIcon(".//res//bakeryshop.png");
+            imageLabel.setIcon(image);	
+            
             position="north";
             mainTextArea.setText("There is a bakery.They give you a  free cookie.\n(Your HP is recovered by 2)");
             playerHP=playerHP+2;
@@ -264,6 +266,9 @@ public class z {
             choice4.setText("");	
 	}
 	public void east(){
+               image= new ImageIcon(".//res//sword.png");
+            imageLabel.setIcon(image);	
+            
 		position = "east";
 		mainTextArea.setText("You walk into a city but unlucky every store is closed.You accidently found a Long Sword\n\n(You obatined a Long Sword)");
 		weapon = "Long Sword";
@@ -275,7 +280,7 @@ public class z {
 		
 	}
 	public void west(){
-            image= new ImageIcon(".//res//bear.jpg");
+            image= new ImageIcon(".//res//bear.png");
             imageLabel.setIcon(image);
             
             
@@ -288,7 +293,7 @@ public class z {
 	}
 	public void fight(){
 		position = "fight";
-		mainTextArea.setText("Monter HP: " + monsterHP + "\n\nWhat do you do?");
+		mainTextArea.setText("Bear? HP: " + monsterHP + "\n\nWhat do you do?");
 		choice1.setText("Attack");
 		choice2.setText("Run");
 		choice3.setText("");
@@ -300,13 +305,13 @@ public class z {
 		int playerDamage = 0;
 		
 		if(weapon.equals("Knife")){
-			playerDamage = new java.util.Random().nextInt(25);
+			playerDamage = new java.util.Random().nextInt(15);
 		}
 		else if(weapon.equals("Long Sword")){
-			playerDamage = new java.util.Random().nextInt(60); 
+			playerDamage = new java.util.Random().nextInt(35); 
 		}
 		
-		mainTextArea.setText("You attacked the monster and gave " + playerDamage + " damage!");
+		mainTextArea.setText("You attacked the enemy and gave " + playerDamage + " damage!");
 		
 		monsterHP = monsterHP - playerDamage;
 		
@@ -322,7 +327,7 @@ public class z {
 		
 		monsterDamage = new java.util.Random().nextInt(30); 
 		
-		mainTextArea.setText("The bear attacked you and gave " + monsterDamage + " damage!");
+		mainTextArea.setText("The bear? attacked you and gave " + monsterDamage + " damage!");
 		
 		playerHP = playerHP - monsterDamage;
 		hpLabelNumber.setText(""+playerHP);
@@ -335,7 +340,7 @@ public class z {
 	public void win(){
 		position = "win";
 		
-		mainTextArea.setText("You defeated a polar bear!\nYou dismember a polar bear.!\n\n(You obatined a Bear Meats!)");
+		mainTextArea.setText("You defeated the polar bear!\nYou dismember the polar bear.!\n\n(You obatined a Bear Meats!)");
 		
 		bearMeat = 1;
 		
@@ -348,7 +353,7 @@ public class z {
 	public void lose(){
 		position = "lose";
 		
-		mainTextArea.setText("You are dead!\n\n");
+		mainTextArea.setText("You are dead!\n\n<GAME OVER>");
 		
 		choice1.setText("");
 		choice2.setText("");
