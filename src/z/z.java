@@ -25,7 +25,7 @@ public class z {
         Font normalFont =new Font("Times New Roman ",Font.PLAIN, 19);
         JButton startButton, choice1, choice2, choice3, choice4;
         JTextArea mainTextArea;
-        int playerHP , monsterHP, bearMeat;
+        int playerHP , monsterHP, bearMeat, cookie;
         String weapon, position;
         
         TitleScreenHandler tsHandler = new TitleScreenHandler();
@@ -218,14 +218,14 @@ public class z {
             imageLabel.setIcon(image);
             
 		position = "talkMom";
-		mainTextArea.setText("Mom:Dont't come back.\nif you can't bring any food for dinner");
+		mainTextArea.setText("Mom:Don't come back.\nif you can't bring any food for dinner");
 		choice1.setText(">");
 		choice2.setText("");
 		choice3.setText("");
 		choice4.setText("");
 	}
 	public void callBrother(){
-                 image= new ImageIcon(".//res//brother.jpg");
+                 image= new ImageIcon(".//res//brother.png");
             imageLabel.setIcon(image);
             
 		position = "callBrother";
@@ -242,7 +242,7 @@ public class z {
             imageLabel.setIcon(image);
             
 		position = "crossRoad";
-		mainTextArea.setText("You are at a crossroad.\nIf you go south, you will go back to the house.");
+		mainTextArea.setText("You are at a crossroad.\n(If you go south, you will go back to the house.)");
 		choice1.setText("Go north");
 		choice2.setText("Go east");
 		choice3.setText("Go south");
@@ -254,10 +254,10 @@ public class z {
 	public void north(){
 	   image= new ImageIcon(".//res//bakeryshop.png");
             imageLabel.setIcon(image);	
-            
+            cookie=cookie+1;
             position="north";
-            mainTextArea.setText("There is a bakery.They give you a  free cookie.\n(Your HP is recovered by 2)");
-            playerHP=playerHP+2;
+            mainTextArea.setText("There is a bakery.They give you a  free cookies.\n(Your HP is recovered by 24)");
+            playerHP=playerHP+24;
             hpLabelNumber.setText(""+playerHP);
                   
             choice1.setText("Go south");
@@ -308,7 +308,7 @@ public class z {
 			playerDamage = new java.util.Random().nextInt(15);
 		}
 		else if(weapon.equals("Long Sword")){
-			playerDamage = new java.util.Random().nextInt(35); 
+			playerDamage = new java.util.Random().nextInt(40); 
 		}
 		
 		mainTextArea.setText("You attacked the enemy and gave " + playerDamage + " damage!");
@@ -325,7 +325,7 @@ public class z {
 		
 		int monsterDamage = 0;
 		
-		monsterDamage = new java.util.Random().nextInt(30); 
+		monsterDamage = new java.util.Random().nextInt(40); 
 		
 		mainTextArea.setText("The bear? attacked you and gave " + monsterDamage + " damage!");
 		
@@ -352,8 +352,10 @@ public class z {
 	}
 	public void lose(){
 		position = "lose";
+            image= new ImageIcon(".//res//dead.jpg");
+            imageLabel.setIcon(image);
 		
-		mainTextArea.setText("You are dead!\n\n<GAME OVER>");
+		mainTextArea.setText("You ripped apart by Bear?.You are dead!\n\n<GAME OVER>");
 		
 		choice1.setText("");
 		choice2.setText("");
@@ -364,10 +366,51 @@ public class z {
 		choice3.setVisible(false);
 		choice4.setVisible(false);
 	}
+        public void lose2(){
+              image= new ImageIcon(".//res//dead2.png");
+            imageLabel.setIcon(image);
+            
+            	position = "lose2";
+		
+		mainTextArea.setText("You are murdered by YOUR BROTHER!\n\n<GAME OVER>");
+		
+		choice1.setText("");
+		choice2.setText("");
+		choice3.setText("");
+		choice4.setText("");
+		choice1.setVisible(false);
+		choice2.setVisible(false);
+		choice3.setVisible(false);
+		choice4.setVisible(false);
+            
+        }
+          public void lose3(){
+              image= new ImageIcon(".//res//dead3.png");
+            imageLabel.setIcon(image);
+            
+            	position = "lose3";
+		
+		mainTextArea.setText("You're eating a cookies too fast.\nYou chocked to death. \n\n<GAME OVER>");
+		
+		choice1.setText("");
+		choice2.setText("");
+		choice3.setText("");
+		choice4.setText("");
+		choice1.setVisible(false);
+		choice2.setVisible(false);
+		choice3.setVisible(false);
+		choice4.setVisible(false);
+            
+        }
 	public void ending(){
+             image= new ImageIcon(".//res//mom2.jpg");
+            imageLabel.setIcon(image);
+            
 		position = "ending";
 		
-		mainTextArea.setText("Mom:Oh you killed a polar bear!?\n Thank you.I'm going to make a dinner!\nWelcome to back!\n\n<THE END>");
+		mainTextArea.setText("Mom:Oh you killed a polar bear!?\n Well done.I'm going to make a dinner!\nWelcome to back!\n\n<THE END>\nThank you for playing");
+                
+                
 		
 		choice1.setText("");
 		choice2.setText("");
@@ -429,7 +472,15 @@ public class z {
                                 break;
 			case "callBrother":
 				switch(yourChoice){
-				case "c1": houseGate(); break;
+				case "c1":if(playerHP<1){
+						lose2();
+					}
+					else{
+						houseGate();
+					}
+					break;
+                                   
+                                
 				}
 				break;
 			case "crossRoad":
@@ -443,8 +494,15 @@ public class z {
 			case "north":
 				switch(yourChoice){
 				case "c1": 
+                                    if(cookie==4){
+						lose3();
+					}
+					else{
+						crossRoad();
+					}
+					break;
                                    
-                                    crossRoad(); break;
+                                  
 				}
 				break;
 			case "east":
