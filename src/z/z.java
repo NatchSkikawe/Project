@@ -310,6 +310,9 @@ public class z {
 		else if(weapon.equals("Long Sword")){
 			playerDamage = new java.util.Random().nextInt(40); 
 		}
+                else if(weapon.equals("Long Sword+1")){
+			playerDamage = new java.util.Random().nextInt(60); 
+		}
 		
 		mainTextArea.setText("You attacked the enemy and gave " + playerDamage + " damage!");
 		
@@ -408,11 +411,143 @@ public class z {
             
 		position = "ending";
 		
-		mainTextArea.setText("Mom:Oh you killed a polar bear!?\n Well done.I'm going to make a dinner!\nWelcome to back!\n\n<THE END>\nThank you for playing");
+		mainTextArea.setText("Mom:Oh you killed a polar bear!?\n Well done.I'm going to make a dinner!\nI will call you when dinner is ready.");
                 
                 
 		
-		choice1.setText("");
+		choice1.setText(">");
+		choice2.setText("");
+		choice3.setText("");
+		choice4.setText("");
+                
+        }
+	public void room(){
+               image= new ImageIcon(".//res//dance.gif");
+            imageLabel.setIcon(image);
+            position="room";
+            
+            mainTextArea.setText("You go back  to rest in your room.\nYou have a free time now.\n\nWhat do you do?");
+                   
+		
+		choice1.setText("Go sleeping");
+		choice2.setText("Clean the sword");
+		choice3.setText("Study");
+		choice4.setText("");
+            
+        }
+        public  void sleeping(){
+             image= new ImageIcon(".//res//dance.gif");
+            imageLabel.setIcon(image);
+            position="sleeping";
+            
+              mainTextArea.setText("You have a good sleep. \n(Your HP is recovered by 30)");
+            playerHP=playerHP+30;
+            hpLabelNumber.setText(""+playerHP);
+		choice1.setText(">");
+		choice2.setText("");
+		choice3.setText("");
+		choice4.setText("");
+                
+        }
+        public void cleanSword(){
+             image= new ImageIcon(".//res//dance.gif");
+            imageLabel.setIcon(image);
+            position="cleanSword";
+            
+              mainTextArea.setText("You have cleaned the sword, your sword sharper. \n(Your Sword max damage is increased by 20)");
+                weapon = "Long Sword+1";
+		weaponLabelName.setText(weapon);
+               	
+		choice1.setText(">");
+		choice2.setText("");
+		choice3.setText("");
+		choice4.setText("");
+            
+        }
+        public void study(){
+             image= new ImageIcon(".//res//dance.gif");
+            imageLabel.setIcon(image);
+            position="study";
+             mainTextArea.setText("You trying to study but you're  too tired.You fall sleep \n(Your HP is recovered by 10)");
+                     playerHP=playerHP+10;
+            hpLabelNumber.setText(""+playerHP);
+               	
+		choice1.setText(">");
+		choice2.setText("");
+		choice3.setText("");
+		choice4.setText("");
+            
+            
+        }
+        public void dinner(){
+            position="dinner";
+               mainTextArea.setText("About 1 hour later,Mom  call you for dinner.You eat everything  on a  dish deliciously.\n(Your HP is recovered by 19)");
+                 playerHP=playerHP+19;
+            hpLabelNumber.setText(""+playerHP);
+
+                 	
+		choice1.setText(">");
+		choice2.setText("");
+		choice3.setText("");
+		choice4.setText("");
+            
+            
+        }
+     public void night(){
+         position="night";
+          mainTextArea.setText("There is 6 hours remaining before you die.\n\nWhat do you want do?");
+          	choice1.setText("Sleep.");
+		choice2.setText("Go Outside.");
+		choice3.setText("Finding meme.");
+		choice4.setText("WHAT!");
+         
+     }
+      public void sleep(){
+         position="sleep";
+          mainTextArea.setText("You chose to sleep  willingly to leave this world peacfully");
+          	choice1.setText(">");
+		choice2.setText("");
+		choice3.setText("");
+		choice4.setText("");
+         
+     }
+     
+     public void goOut(){
+            image= new ImageIcon(".//res//bakeryshop.png");
+            imageLabel.setIcon(image);	
+         
+         position="goOut";
+           mainTextArea.setText("It's cold night.You can see the light from bakery shop from infont of your house.\nYou decided to walk to bakery shop");
+           	choice1.setText(">");
+		choice2.setText("");
+		choice3.setText("");
+		choice4.setText("");
+     }
+     public void findMeme(){
+         position="findMeme";
+          mainTextArea.setText("Too bad internet connection no longer available in this world anymore.");
+          	choice1.setText(">");
+		choice2.setText("");
+		choice3.setText("");
+		choice4.setText("");
+         
+     }
+     public void what(){
+         position="what";
+           mainTextArea.setText("You suddenly say WHAT! out loud that trigger your brother.");
+           	choice1.setText(">");
+		choice2.setText("");
+		choice3.setText("");
+		choice4.setText("");
+         
+     }
+     public void end1(){
+          image= new ImageIcon(".//res//end1.png");
+            imageLabel.setIcon(image);	
+         
+         position="end1";
+                mainTextArea.setText("You sleep forever with this world.\n\n<END1>");
+               	choice1.setText("");
 		choice2.setText("");
 		choice3.setText("");
 		choice4.setText("");
@@ -420,7 +555,39 @@ public class z {
 		choice2.setVisible(false);
 		choice3.setVisible(false);
 		choice4.setVisible(false);
-	}
+            
+         
+     }
+     public void end2(){
+             image= new ImageIcon(".//res//bakeryshop.png");
+            imageLabel.setIcon(image);	
+         
+         position="end2";
+          mainTextArea.setText("You want to eat a cookies until the end of the world.\n\n<END2>");
+               	choice1.setText("");
+		choice2.setText("");
+		choice3.setText("");
+		choice4.setText("");
+		choice1.setVisible(false);
+		choice2.setVisible(false);
+		choice3.setVisible(false);
+		choice4.setVisible(false);
+     }
+        public void end3(){
+             image= new ImageIcon(".//res//end3.png");
+            imageLabel.setIcon(image);	
+         
+         position="end3";
+          mainTextArea.setText("Maybe because the news about the end of the world make people crazy.Your brother hit you to death.\n\n<END3>");
+               	choice1.setText("");
+		choice2.setText("");
+		choice3.setText("");
+		choice4.setText("");
+		choice1.setVisible(false);
+		choice2.setVisible(false);
+		choice3.setVisible(false);
+		choice4.setVisible(false);
+     }
 
 
 
@@ -551,8 +718,80 @@ public class z {
 				case "c1": crossRoad();
 				}
 				break;
+                         case"ending":
+                             switch(yourChoice){
+                                 case "c1":room(); break;
+                                 
+                                 
+                             }
+                             break;
+                         case"room":
+                             switch(yourChoice){
+                                 case"c1":sleeping();  break;
+                     
+                                 case"c2":cleanSword();break;
+             
+                                 case"c3":study(); break;
+              
+                             }
+                             break;
+                             case"sleeping":
+                                   switch(yourChoice){
+                                 case "c1":dinner(); break;
+                                   }
+                                   break;
+                                     case"cleanSword":
+                                   switch(yourChoice){
+                                 case "c1":dinner(); break;
+                                   }
+                                   break;
+                                     case"study":
+                                   switch(yourChoice){
+                                 case "c1":dinner(); break;
+                                   }
+                                   break;
+                           case"dinner":
+                                switch(yourChoice){
+                                    case"c1": night(); break;
+                               
+                                }
+                                break;
+                                    
+			
+                           case"night":
+                                switch(yourChoice){
+                                    case"c1":sleep();break;
+                                    case"c2":goOut(); break;
+                                    case"c3":findMeme(); break;
+                                    case"c4": what();break;
+                               
 				
+                                    
 			}
+                                 break;
+                         case"sleep":
+                                   switch(yourChoice){
+                                 case "c1":end1(); break;
+                                   }
+                                   break;
+                        case"goOut":
+                             switch(yourChoice){
+                                 case "c1":end2(); break;
+                                   }
+                                   break;
+                        case"findMeme":
+                            switch(yourChoice){
+                                 case "c1":night(); break;
+                                   }
+                                   break;
+                         case"what":
+                             switch(yourChoice){
+                                 case "c1":end3(); break;
+                                   }
+                                   break;
+                                   
+                                   
+                            
 			
 			
 		}
@@ -561,4 +800,5 @@ public class z {
 
 
         }
+}
 
